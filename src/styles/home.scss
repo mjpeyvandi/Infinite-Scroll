@@ -1,0 +1,15 @@
+@import './variables.scss';
+
+.home{
+    height: 250px;
+    background-color: $primary-color;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.home__titr{
+    font-family: $font-family;
+    font-size: xx-large;
+}

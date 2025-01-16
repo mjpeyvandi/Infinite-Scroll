@@ -1,0 +1,27 @@
+@import "../../styles/variables.scss";
+
+.home__button {
+    width: 180px;
+    height: 65px;
+    outline: none;
+    border: none;
+    background-color: $secondary-color;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    .home__button__link {
+        display: block;
+        height: inherit;
+        width: inherit;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-decoration: none;
+        font-family: $font-family;
+        color: $text-color;
+        font-size: large;
+        font-weight: 600;
+    }
+}

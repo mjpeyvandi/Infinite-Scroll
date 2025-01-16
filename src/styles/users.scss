@@ -1,0 +1,76 @@
+@import "../styles/variables.scss";
+
+.users {
+    width: 100;
+    height: auto;
+    background-color: burlywood;
+    border: 0.2px solid $text-color;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+
+    .user__card {
+        width: 100;
+        height: 120px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        border-top: 0.2px solid $text-color;
+        border-bottom: 0.2px solid $text-color;
+
+        .user__card__info {
+            height: 100%;
+            width: auto;
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+            align-items: center;
+            gap: 20px;
+            .user__card__info__box {
+                height: 70px;
+                display: flex;
+                flex-direction: row;
+                justify-content: flex-start;
+                align-items: center;
+                gap: 15px;
+
+                .user__card__img {
+                    object-fit: cover;
+                    border-radius: 100%;
+                    width: 55px;
+                    height: 100%;
+                    display: flex;
+                    align-items: center;
+
+                    .image {
+                        height: 55px;
+                        width: 100%;
+                        object-fit: cover;
+                        border-radius: 100%;
+                    }
+                }
+                .user__card__name {
+                    height: 100%;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: flex-start;
+                    align-items: center;
+                    flex-wrap: nowrap;
+                    gap: 4px;
+                    
+                    .user__name{
+                        height: 5px;
+                        font-weight: 600;
+                    }
+
+                }
+            }
+        }
+    }
+}
+
+span {
+    color: rgb(133, 133, 133);
+}
