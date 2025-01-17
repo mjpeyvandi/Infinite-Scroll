@@ -1,16 +1,17 @@
 import React, { useEffect, useState } from "react";
 import "../styles/users.scss";
 
-import { FaFire } from "react-icons/fa";
-import { FaVoicemail } from "react-icons/fa";
 import { DNA } from "react-loader-spinner";
+import { UserCard } from "../components/Users/UserCard";
 
 export const Users = () => {
+  // eslint-disable-next-line no-unused-vars
   const [Users, setUsers] = useState([]);
   const [displayedUsers, setDisplayedUsers] = useState([]);
   const [page, setPage] = useState(1);
   const [Loading, setLoading] = useState(false);
 
+  // get initial data
   useEffect(() => {
     const getData = async () => {
       setLoading(true);
@@ -26,6 +27,7 @@ export const Users = () => {
     getData();
   }, []);
 
+  // check scroll user for load more items
   useEffect(() => {
     const handleScroll = () => {
       if (
@@ -42,59 +44,38 @@ export const Users = () => {
     };
   }, [displayedUsers, page]);
 
+  // Get more users by changing the page
   const loadMoreUsers = async () => {
     setLoading(true);
-    const response = await fetch(`https://randomuser.me/api/?results=10&page=${page}`)
-    const newData = await response.json()
+    const response = await fetch(
+      `https://randomuser.me/api/?results=10&page=${page}`
+    );
+    const newData = await response.json();
 
-    if(newData){
-      setDisplayedUsers((prev)=> [...prev, ...newData.results])
-      setPage((curPage)=> curPage + page)
+    if (newData) {
+      setDisplayedUsers((prev) => [...prev, ...newData.results]);
+      setPage((curPage) => curPage + page);
       setLoading(false);
     }
   };
   return (
     <div className="users">
-      {displayedUsers?.map((user, key) => (
-        <div className="user__card" key={key}>
-          <div className="user__card__info">
-            <span>{key + 1}</span>
-            <div className="user__card__info__box">
-              <div className="user__card__img">
-                <img src={user.picture.thumbnail} alt="" className="image" />
-              </div>
-              <div className="user__card__name">
-                <p className="user__name">
-                  {user.name.title + "" + user.name.first + "" + user.name.last}
-                </p>
-                <span>
-                  {user.login.username} / {user.gender}
-                </span>
-              </div>
-            </div>
-          </div>
-          <div className="user__card__details">
-            <div className="user__card__phone">
-              <FaFire className="user__phone__icon" />
-              <span>{user.phone}</span>
-            </div>
-            <div className="user__card__email">
-              <FaVoicemail />
-              <p>{user.email}</p>
-            </div>
-            <p className="user__card__address">
-              {user.location.city}, {user.location.country},{" "}
-              {user.location.postcode}, {user.location.state}
-            </p>
-          </div>
-          <div className="user__card__country">
-            <img
-              src="https://randomuser.me/api/portraits/thumb/men/78.jpg"
-              alt=""
-              className="user__country__image"
-            />
-          </div>
-        </div>
+      {displayedUsers?.map((user, index) => (
+        <UserCard
+          key={index}
+          index={index}
+          image={user.picture.thumbnail}
+          name={user.name.title + " " + user.name.first + " " + user.name.last}
+          username={user.login.username}
+          gender={user.gender}
+          phone={user.phone}
+          email={user.email}
+          city={user.location.city}
+          country={user.location.country}
+          postcode={user.location.postcode}
+          state={user.location.state}
+          flag={`https://flagcdn.com/48x36/${user.nat.toLowerCase()}.png`}
+        />
       ))}
 
       {Loading && (
