@@ -1,24 +1,27 @@
 @import "../styles/variables.scss";
 
 .users {
-    width: 100;
+    width: 100%;
     height: auto;
-    background-color: burlywood;
-    border: 0.2px solid $text-color;
+    background-color: $primary-color;
+    
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
 
     .user__card {
-        width: 100;
-        height: 120px;
+        position: relative;
+        width: 100%;
+        min-height: 120px;
         display: flex;
         flex-direction: row;
         justify-content: space-between;
         align-items: center;
-        border-top: 0.2px solid $text-color;
-        border-bottom: 0.2px solid $text-color;
+        box-sizing: border-box;
+        padding: 0 10px;
+        transform: none;
+        border: 0.2px solid rgb(155, 155, 155);
 
         .user__card__info {
             height: 100%;
@@ -29,7 +32,7 @@
             align-items: center;
             gap: 20px;
             .user__card__info__box {
-                height: 70px;
+                height: 55px;
                 display: flex;
                 flex-direction: row;
                 justify-content: flex-start;
@@ -37,35 +40,85 @@
                 gap: 15px;
 
                 .user__card__img {
-                    object-fit: cover;
-                    border-radius: 100%;
                     width: 55px;
                     height: 100%;
                     display: flex;
+                    justify-content: center;
                     align-items: center;
 
                     .image {
-                        height: 55px;
-                        width: 100%;
                         object-fit: cover;
-                        border-radius: 100%;
+                        object-position: center;
+                        height: auto;
+                        width: 100%;
+                        border-radius: 50%;
                     }
                 }
                 .user__card__name {
                     height: 100%;
                     display: flex;
                     flex-direction: column;
-                    justify-content: flex-start;
-                    align-items: center;
+                    justify-content: center;
+                    align-items: start;
                     flex-wrap: nowrap;
                     gap: 4px;
-                    
-                    .user__name{
-                        height: 5px;
-                        font-weight: 600;
-                    }
 
+                    .user__name {
+                        display: inline-block;
+                        padding: 0;
+                        margin: 0;
+                        line-height: normal;
+                        height: auto;
+                        font-size: large;
+                        font-weight: 600;
+                        color: #53a6ff;
+                    }
                 }
+            }
+        }
+
+        .user__card__details {
+            height: auto;
+            width: 40%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 10px 0;
+            gap: 5px;
+
+            .user__card__email,
+            .user__card__phone {
+                width: auto;
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+                gap: 8px;
+                .user__phone__icon {
+                    color: rgb(241, 91, 5);
+                }
+                span {
+                    background-color: rgb(240, 240, 240);
+                }
+                p {
+                    color: #53a6ff;
+                    font-weight: 600;
+                    background-color: rgb(240, 240, 240);
+                    display: inline-block;
+                    padding: 0;
+                    margin: 0;
+                    line-height: normal;
+                    height: auto;
+                }
+            }
+            .user__card__address {
+                display: inline-block;
+                padding: 0;
+                margin: 0;
+                line-height: normal;
+                height: auto;
+                color: rgb(133, 133, 133);
+                background-color: rgb(240, 240, 240);
             }
         }
     }
